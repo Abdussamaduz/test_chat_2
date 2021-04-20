@@ -1,0 +1,49 @@
+<%- include('parts/header') %> 
+
+<main class="mt-4">
+    <div class="container">
+        <div class="card">
+            <div class=" text-start align-items-center row">
+                <div class="col-4">
+                    <label for="photo">
+                    <img class="rounded-circle" src="https://i.pravatar.cc/400" alt="Random img">
+                    </label>
+                    <input class="visually-hidden" id="photo" type="file">
+                </div>
+                <div class="col-8 p-4">
+                    <h2>User Name</h2>
+                    <ul class="list-unstyled">
+                        <li>
+                            <p>Email: Abdussomad@main.com</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+
+let photoInputElement = document.querySelector("#photo")
+let formData = new FormData()
+
+photoInputElement.addEventListener('change', async evn => {
+    formData.append('photo', evn.target.files[0])
+    // console.log(formData);
+
+    try {
+        let response = await fetch('/user/photo', {
+            method: "POST",
+            body: formData,
+
+        })
+        response = response.json()
+        console.log(response);
+    } catch (error) {
+        console.log(error);
+    }
+})
+</script>
+
+<%- include('parts/footer') %> 

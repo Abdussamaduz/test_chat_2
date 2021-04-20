@@ -1,0 +1,27 @@
+<%- include('parts/header') %> 
+
+<main class="mt-4">
+    <div class="container text-center">
+        <h1>Login page</h1>
+        <div class="row">
+            <div class="col-lg-6 col-12 mx-auto mt-2">
+                    <% if(error) { %> 
+                        <div class="alert alert-danger"><%= error %></div>
+                        <% } %> 
+                <form class="mt-3" action="/login" method="POST">
+                    <div class="form-floating mb-3">
+                        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="a@a.com" autocomplete="off" required>
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" value="password" autocomplete="off" required>
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <button class="btn btn-primary w-100 mt-3">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('parts/footer') %> 
